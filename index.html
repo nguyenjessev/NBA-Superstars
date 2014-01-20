@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<title>NBA Superstars</title>
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+<link rel="stylesheet" href="css/main.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/player.js"></script>
+<script type="text/javascript" src="js/teams.js"></script>
+<script type="text/javascript" src="js/game.js"></script>
+<link href="/resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="/resources/css/bootstrap-navbar-fixed-top.css" rel="stylesheet">
+</head>
+
+<body>
+<!-- Navbar -->
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="navbar-brand" href="/">SystemPunch</a> </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li> <a href="/rpg-clicker">RPG Clicker</a> </li>
+                <li class="active"> <a href="/nba-superstars">NBA Superstars</a> </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/blog">Blog</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="gameContainer">
+    <div id="team1"></div>
+    <div id="team2"></div>
+    <div id="gameInfo"> </div>
+</div>
+<div class="container">
+    <p>
+    <div class="btn-group-centered">
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary" id="generateTeam1">Generate Team 1</button>
+            <button type="button" class="btn btn-success" id="simulateGame">Simulate Game</button>
+            <button type="button" class="btn btn-primary" id="generateTeam2">Generate Team 2</button>
+        </div>
+    </div>
+    </p>
+</div>
+<div id="spaceJam" style="position:fixed;width:200px;height:34px;overflow:hidden;bottom:0;">
+    <div style="position:absolute;">
+        <iframe width="200" height="34" src="https://www.youtube.com/embed/J9FImc2LOr8?rel=0"></iframe>
+    </div>
+</div>
+</body>
+</html>
