@@ -22,7 +22,9 @@ function simGame(team1, team2) {
     clearGameInfo();
     
     //Sort teams by rebounding ability
-    console.log(team1);
+    team1.players.sort(function(a, b) {
+        return a.stats["Rebounds"] - b.stats["Rebounds"];
+    });
 
     // Give first possession to random team
     if(Math.floor(Math.random()*2)) {
