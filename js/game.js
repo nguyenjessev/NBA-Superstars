@@ -1,4 +1,4 @@
-console.log("11");
+console.log("12");
 
 function simGame(team1, team2) {
     var possessionsLeft = Math.floor(Math.random()*15+190);
@@ -176,7 +176,7 @@ function simGame(team1, team2) {
             playerPossession = tempPlayer;
             //playerPossession = teamPossession.players[Math.floor(Math.random()*5)];
             playerPossession.gameStats["REB"]++;
-            possessionSummary += playerPossession.name +" gets the rebound ("+ playerPossession.gameStats['REB'] +" REB)";
+            possessionSummary += "<p>"+ playerPossession.name +" gets the rebound ("+ playerPossession.gameStats['REB'] +" REB)</p>";
             getRebound = false;
         } else playerPossession = teamPossession.players[Math.floor(Math.random()*5)];
 
@@ -189,7 +189,7 @@ function simGame(team1, team2) {
         if(Math.floor(Math.random()*101) < threePointFrequency+playerPossession.tendencies["3pt"]) {
             var makeChance = Math.round(20*Math.log(playerPossession.stats["3pt Shooting"])/threePointDifficulty - randomFromInterval(50, 60));
 
-            possessionSummary += playerPossession.name +" shoots it from deep...";
+            possessionSummary += "<p>"+ playerPossession.name +" shoots it from deep...</p>";
             
             playerPossession.gameStats["3PA"]++;
             playerPossession.gameStats["FGA"]++;
@@ -198,7 +198,7 @@ function simGame(team1, team2) {
             if(Math.floor(Math.random() * 100) > (playerPossession.stats["3pt Shooting"] - matchup.stats["Blocking"] + 25) && Math.random() < 0.5) {
                 matchup.gameStats["BLK"]++;
                 
-                possessionSummary += matchup.name +" blocks the shot! ("+ matchup.gameStats["BLK"] +" BLKS)";
+                possessionSummary += "<p>"+ matchup.name +" blocks the shot! ("+ matchup.gameStats["BLK"] +" BLKS)</p>";
                 
                 getRebound = true;
             } else {          
@@ -210,18 +210,18 @@ function simGame(team1, team2) {
 
                     if(assister) {
                         assister.gameStats["AST"]++;
-                        possessionSummary += "... and makes it! ("+ playerPossession.gameStats['PTS'] +" PTS) "+ assister.name +" gets the assist ("+ assister.gameStats['AST'] +" AST)";
-                    } else possessionSummary += "... and makes it! ("+ playerPossession.gameStats['PTS'] +" PTS)";
+                        possessionSummary += "<p>... and makes it! ("+ playerPossession.gameStats['PTS'] +" PTS) "+ assister.name +" gets the assist ("+ assister.gameStats['AST'] +" AST)</p>";
+                    } else possessionSummary += "<p>... and makes it! ("+ playerPossession.gameStats['PTS'] +" PTS)</p>";
 
                 } else {
-                    possessionSummary += "... and misses!";
+                    possessionSummary += "<p>... and misses!</p>";
                     getRebound = true;
                 }
             }
         } else {
             var makeChance = Math.round(20*Math.log(playerPossession.stats["Shooting"])/shotDifficulty - randomFromInterval(25, 35)); // Formula for calculating shooting percentage from Shooting stat
 
-            possessionSummary += playerPossession.name +" shoots...";
+            possessionSummary += "<p>"+ playerPossession.name +" shoots...</p>";
             
             playerPossession.gameStats["FGA"]++; // Increment FGA
       
@@ -229,7 +229,7 @@ function simGame(team1, team2) {
             if(Math.floor(Math.random() * 100) > (playerPossession.stats["Shooting"] - matchup.stats["Blocking"] + 25) && Math.random() < 0.5) {
                 matchup.gameStats["BLK"]++;
                 
-                possessionSummary += matchup.name +" blocks the shot! ("+ matchup.gameStats["BLK"] +" BLKS)";
+                possessionSummary += "<p>"+ matchup.name +" blocks the shot! ("+ matchup.gameStats["BLK"] +" BLKS)</p>";
                 
                 getRebound = true;
             } else {   
@@ -240,11 +240,11 @@ function simGame(team1, team2) {
 
                     if(assister) {
                         assister.gameStats["AST"]++;
-                        possessionSummary += "... and scores ("+ playerPossession.gameStats['PTS'] +" PTS) "+ assister.name +" gets the assist ("+ assister.gameStats['AST'] +" AST)";
-                    } else possessionSummary += "... and scores ("+ playerPossession.gameStats['PTS'] +" PTS)"; // Print made shot
+                        possessionSummary += "<p>... and scores ("+ playerPossession.gameStats['PTS'] +" PTS) "+ assister.name +" gets the assist ("+ assister.gameStats['AST'] +" AST)</p>";
+                    } else possessionSummary += "<p>... and scores ("+ playerPossession.gameStats['PTS'] +" PTS)</p>"; // Print made shot
 
                 } else {
-                    possessionSummary += "... and misses";
+                    possessionSummary += "<p>... and misses</p>";
                     getRebound = true;
                 } // or print missed shot
             }
