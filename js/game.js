@@ -1,4 +1,4 @@
-console.log("5");
+console.log("6");
 
 function simGame(team1, team2) {
     var possessionsLeft = Math.floor(Math.random()*15+190);
@@ -155,7 +155,7 @@ function simGame(team1, team2) {
         } else if(getRebound) {
             if(Math.random() <= 0.3) {
                 do {
-                    if(Math.floor(Math.random() * 101) < otherTeam.players[i].stats["Rebounds"] && Math.random() < 0.3) {
+                    if(Math.floor(Math.random() * 101) < otherTeam.players[i].stats["Rebounds"] && Math.random() < 0.4) {
                         tempPlayer = otherTeam.players[i];
                     } else {
                         i = Math.floor(Math.random() * 5);
@@ -166,7 +166,7 @@ function simGame(team1, team2) {
                 teamPossession = tempTeam;
             } else {
                 do {
-                    if(Math.floor(Math.random() * 101) < teamPossession.players[i].stats["Rebounds"] && Math.random() < 0.3) {
+                    if(Math.floor(Math.random() * 101) < teamPossession.players[i].stats["Rebounds"] && Math.random() < 0.4) {
                         tempPlayer = teamPossession.players[i];
                     } else {
                         i = Math.floor(Math.random() * 5);
@@ -192,20 +192,26 @@ function simGame(team1, team2) {
             playerPossession.gameStats["3PA"]++;
             playerPossession.gameStats["FGA"]++;
 
-            if(Math.floor(Math.random()*101) <= makeChance) {
-                playerPossession.gameStats["3PM"]++;
-                playerPossession.gameStats["FGM"]++;
-                playerPossession.gameStats["PTS"] += 3;
-                teamPossession.score += 3;
-
-                if(assister) {
-                    assister.gameStats["AST"]++;
-                    possessionSummary += "<p>"+ playerPossession.name +" shoots it from deep and makes it! ("+ playerPossession.gameStats['PTS'] +" PTS) "+ assister.name +" gets the assist ("+ assister.gameStats['AST'] +" AST)</p>";
-                } else possessionSummary += "<p>"+ playerPossession.name +" shoots it from deep and makes it! ("+ playerPossession.gameStats['PTS'] +" PTS)</p>";
-
-            } else {
-                possessionSummary += "<p>"+ playerPossession.name +" shoots it from deep and misses!</p>";
+            var matchup = otherTeam.players[Math.floor(Math.random()*5)];
+            if(Math.floor(Math.random() * 100) > (playerPossession.stats["Shooting"] - matchup.stats["Blocks"] + 25) && Math.random() < 0.5) {
+                matchup.gameStats["BLK"]++;
                 getRebound = true;
+            } else {          
+                if(Math.floor(Math.random()*101) <= makeChance) {
+                    playerPossession.gameStats["3PM"]++;
+                    playerPossession.gameStats["FGM"]++;
+                    playerPossession.gameStats["PTS"] += 3;
+                    teamPossession.score += 3;
+
+                    if(assister) {
+                        assister.gameStats["AST"]++;
+                        possessionSummary += "<p>"+ playerPossession.name +" shoots it from deep and makes it! ("+ playerPossession.gameStats['PTS'] +" PTS) "+ assister.name +" gets the assist ("+ assister.gameStats['AST'] +" AST)</p>";
+                    } else possessionSummary += "<p>"+ playerPossession.name +" shoots it from deep and makes it! ("+ playerPossession.gameStats['PTS'] +" PTS)</p>";
+
+                } else {
+                    possessionSummary += "<p>"+ playerPossession.name +" shoots it from deep and misses!</p>";
+                    getRebound = true;
+                }
             }
         } else {
             var makeChance = Math.round(20*Math.log(playerPossession.stats["Shooting"])/shotDifficulty - randomFromInterval(25, 35)); // Formula for calculating shooting percentage from Shooting stat
