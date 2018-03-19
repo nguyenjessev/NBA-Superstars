@@ -1,4 +1,4 @@
-console.log("4");
+console.log("5");
 
 function simGame(team1, team2) {
     var possessionsLeft = Math.floor(Math.random()*15+190);
@@ -22,14 +22,6 @@ function simGame(team1, team2) {
     var stealFrequency = 30;
 
     clearGameInfo();
-    
-    //Sort teams by rebounding ability
-    team1.players.sort(function(a, b) {
-        return b.stats["Rebounds"] - a.stats["Rebounds"];
-    });
-    team2.players.sort(function(a, b) {
-        return b.stats["Rebounds"] - a.stats["Rebounds"];
-    });
 
     // Give first possession to random team
     if(Math.floor(Math.random()*2)) {
@@ -153,7 +145,7 @@ function simGame(team1, team2) {
     function changePossession() {
         var tempTeam = otherTeam;
         var tempPlayer = null;
-        var i = 0;
+        var i = Math.floor(Math.random() * 5);
         otherTeam = teamPossession;
         teamPossession = tempTeam;
 
