@@ -1,4 +1,4 @@
-console.log("3");
+console.log("4");
 
 function simGame(team1, team2) {
     var possessionsLeft = Math.floor(Math.random()*15+190);
@@ -117,7 +117,7 @@ function simGame(team1, team2) {
 
     // Main simulation of shooting, passes, etc.
     function playBall() {
-        if(Math.floor(Math.random()*101)-20 < passFrequency+playerPossession.tendencies["Pass"]) { // Generate random number from 0-100. If it is less than 40+the player's tendency to pass...
+        if(Math.floor(Math.random()*101) < passFrequency+playerPossession.tendencies["Pass"]) { // Generate random number from 0-100. If it is less than 40+the player's tendency to pass...
             var passTarget;
 
             // Get random teammate
@@ -166,10 +166,7 @@ function simGame(team1, team2) {
                     if(Math.floor(Math.random() * 101) < otherTeam.players[i].stats["Rebounds"] && Math.random() < 0.3) {
                         tempPlayer = otherTeam.players[i];
                     } else {
-                        i++;
-                        if(i > 4) {
-                            i = 0;
-                        }
+                        i = Math.floor(Math.random() * 5);
                     }
                 } while(tempPlayer === null);
                 tempTeam = otherTeam;
@@ -180,10 +177,7 @@ function simGame(team1, team2) {
                     if(Math.floor(Math.random() * 101) < teamPossession.players[i].stats["Rebounds"] && Math.random() < 0.3) {
                         tempPlayer = teamPossession.players[i];
                     } else {
-                        i++;
-                        if(i > 4) {
-                            i = 0;
-                        }
+                        i = Math.floor(Math.random() * 5);
                     }
                 } while(tempPlayer === null);
             }
