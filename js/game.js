@@ -1,4 +1,4 @@
-console.log("2");
+console.log("3");
 
 function simGame(team1, team2) {
     var possessionsLeft = Math.floor(Math.random()*15+190);
@@ -117,7 +117,7 @@ function simGame(team1, team2) {
 
     // Main simulation of shooting, passes, etc.
     function playBall() {
-        if(Math.floor(Math.random()*101) < passFrequency+playerPossession.tendencies["Pass"]) { // Generate random number from 0-100. If it is less than 40+the player's tendency to pass...
+        if(Math.floor(Math.random()*101)-20 < passFrequency+playerPossession.tendencies["Pass"]) { // Generate random number from 0-100. If it is less than 40+the player's tendency to pass...
             var passTarget;
 
             // Get random teammate
