@@ -1,4 +1,4 @@
-console.log("7");
+console.log("8");
 
 function simGame(team1, team2) {
     var possessionsLeft = Math.floor(Math.random()*15+190);
@@ -193,7 +193,7 @@ function simGame(team1, team2) {
             playerPossession.gameStats["FGA"]++;
 
             var matchup = otherTeam.players[Math.floor(Math.random()*5)];
-            if(Math.floor(Math.random() * 100) > (playerPossession.stats["Shooting"] - matchup.stats["Blocks"] + 25) && Math.random() < 0.2) {
+            if(Math.floor(Math.random() * 100) > (playerPossession.stats["Shooting"] - matchup.stats["Blocking"] + 25) && Math.random() < 0.5) {
                 matchup.gameStats["BLK"]++;
                 
                 possessionSummary += "<p>"+ matchup.name +" blocks the shot! ("+ matchup.gameStats["BLK"] +" BLKS)</p>";
