@@ -1,4 +1,4 @@
-console.log("1");
+console.log("2");
 
 function simGame(team1, team2) {
     var possessionsLeft = Math.floor(Math.random()*15+190);
@@ -163,7 +163,7 @@ function simGame(team1, team2) {
         } else if(getRebound) {
             if(Math.random() <= 0.3) {
                 do {
-                    if(Math.floor(Math.random() * 101) < otherTeam.players[i].stats["Rebounds"] && Math.random() < 0.4) {
+                    if(Math.floor(Math.random() * 101) < otherTeam.players[i].stats["Rebounds"] && Math.random() < 0.3) {
                         tempPlayer = otherTeam.players[i];
                     } else {
                         i++;
@@ -177,7 +177,7 @@ function simGame(team1, team2) {
                 teamPossession = tempTeam;
             } else {
                 do {
-                    if(Math.floor(Math.random() * 101) < teamPossession.players[i].stats["Rebounds"] && Math.random() < 0.4) {
+                    if(Math.floor(Math.random() * 101) < teamPossession.players[i].stats["Rebounds"] && Math.random() < 0.3) {
                         tempPlayer = teamPossession.players[i];
                     } else {
                         i++;
