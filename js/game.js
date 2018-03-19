@@ -1,3 +1,5 @@
+console.log("1");
+
 function simGame(team1, team2) {
     var possessionsLeft = Math.floor(Math.random()*15+190);
     var teamPossession;
