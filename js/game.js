@@ -149,17 +149,17 @@ function simGame(team1, team2) {
 
     // Transfer possession between teams
     function changePossession() {
-        //var tempTeam = otherTeam;
+        var tempTeam = otherTeam;
         var tempPlayer = null;
         var i = 0;
-        //otherTeam = teamPossession;
-        //teamPossession = tempTeam;
+        otherTeam = teamPossession;
+        teamPossession = tempTeam;
 
         if(nextPossession) {
             playerPossession = nextPossession;
             nextPossession = null;
         } else if(getRebound) {
-            if(Math.random() >= 0.3) {
+            if(Math.random() <= 0.3) {
                 do {
                     if(Math.floor(Math.random() * 101) < otherTeam.players[i].stats["Rebounds"]) {
                         tempPlayer = otherTeam.players[i];
@@ -169,13 +169,16 @@ function simGame(team1, team2) {
                 } while(tempPlayer === null);
             } else {
                 do {
-                    if(Math.floor(Math.random() * 101) < teamPossession.players[i].stats["Rebounds"]) {
+                    if(Math.floor(Math.random() * 101)+30 < teamPossession.players[i].stats["Rebounds"]) {
                         tempPlayer = teamPossession.players[i];
                     } else {
                         i++;
+                        if(i > 4) {
+                            i = 0;
+                        }
                     }
                 } while(tempPlayer === null);
-                var tempTeam = otherTeam;
+                tempTeam = otherTeam;
                 otherTeam = teamPossession;
                 teamPossession = tempTeam;
             }
