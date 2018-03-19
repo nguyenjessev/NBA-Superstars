@@ -159,9 +159,9 @@ function simGame(team1, team2) {
             playerPossession = nextPossession;
             nextPossession = null;
         } else if(getRebound) {
-            if(Math.random() <= 0.2) {
+            if(Math.random() <= 0.3) {
                 do {
-                    if(Math.floor(Math.random() * 101) < otherTeam.players[i].stats["Rebounds"] && Math.random() < 0.5) {
+                    if(Math.floor(Math.random() * 101) < otherTeam.players[i].stats["Rebounds"] && Math.random() < 0.4) {
                         tempPlayer = otherTeam.players[i];
                     } else {
                         i++;
@@ -175,7 +175,7 @@ function simGame(team1, team2) {
                 teamPossession = tempTeam;
             } else {
                 do {
-                    if(Math.floor(Math.random() * 101) < teamPossession.players[i].stats["Rebounds"] && Math.random() < 0.5) {
+                    if(Math.floor(Math.random() * 101) < teamPossession.players[i].stats["Rebounds"] && Math.random() < 0.4) {
                         tempPlayer = teamPossession.players[i];
                     } else {
                         i++;
