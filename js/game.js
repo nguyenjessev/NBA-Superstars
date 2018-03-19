@@ -20,6 +20,9 @@ function simGame(team1, team2) {
     var stealFrequency = 30;
 
     clearGameInfo();
+    
+    //Sort teams by rebounding ability
+    console.log(team1);
 
     // Give first possession to random team
     if(Math.floor(Math.random()*2)) {
@@ -149,6 +152,7 @@ function simGame(team1, team2) {
             playerPossession = nextPossession;
             nextPossession = null;
         } else if(getRebound) {
+            
             playerPossession = teamPossession.players[Math.floor(Math.random()*5)];
             playerPossession.gameStats["REB"]++;
             possessionSummary += playerPossession.name +" gets the rebound ("+ playerPossession.gameStats['REB'] +" REB)";
