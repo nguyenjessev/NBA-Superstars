@@ -23,7 +23,10 @@ function simGame(team1, team2) {
     
     //Sort teams by rebounding ability
     team1.players.sort(function(a, b) {
-        return a.stats["Rebounds"] - b.stats["Rebounds"];
+        return b.stats["Rebounds"] - a.stats["Rebounds"];
+    });
+    team2.players.sort(function(a, b) {
+        return b.stats["Rebounds"] - a.stats["Rebounds"];
     });
 
     // Give first possession to random team
@@ -146,16 +149,38 @@ function simGame(team1, team2) {
 
     // Transfer possession between teams
     function changePossession() {
-        var tempTeam = otherTeam;
-        otherTeam = teamPossession;
-        teamPossession = tempTeam;
+        //var tempTeam = otherTeam;
+        var tempPlayer = null;
+        var i = 0;
+        //otherTeam = teamPossession;
+        //teamPossession = tempTeam;
 
         if(nextPossession) {
             playerPossession = nextPossession;
             nextPossession = null;
         } else if(getRebound) {
-            
-            playerPossession = teamPossession.players[Math.floor(Math.random()*5)];
+            if(Math.random() >= 0.3) {
+                do {
+                    if(Math.floor(Math.random() * 101) < otherTeam.players[i].stats["Rebounds"]) {
+                        tempPlayer = otherTeam.players[i];
+                    } else {
+                        i++;
+                    }
+                } while(tempPlayer === null);
+            } else {
+                do {
+                    if(Math.floor(Math.random() * 101) < teamPossession.players[i].stats["Rebounds"]) {
+                        tempPlayer = teamPossession.players[i];
+                    } else {
+                        i++;
+                    }
+                } while(tempPlayer === null);
+                var tempTeam = otherTeam;
+                otherTeam = teamPossession;
+                teamPossession = tempTeam;
+            }
+            playerPossession = tempPlayer;
+            //playerPossession = teamPossession.players[Math.floor(Math.random()*5)];
             playerPossession.gameStats["REB"]++;
             possessionSummary += playerPossession.name +" gets the rebound ("+ playerPossession.gameStats['REB'] +" REB)";
             getRebound = false;
