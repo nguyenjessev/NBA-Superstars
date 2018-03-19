@@ -1,4 +1,4 @@
-console.log("6");
+console.log("7");
 
 function simGame(team1, team2) {
     var possessionsLeft = Math.floor(Math.random()*15+190);
@@ -193,8 +193,11 @@ function simGame(team1, team2) {
             playerPossession.gameStats["FGA"]++;
 
             var matchup = otherTeam.players[Math.floor(Math.random()*5)];
-            if(Math.floor(Math.random() * 100) > (playerPossession.stats["Shooting"] - matchup.stats["Blocks"] + 25) && Math.random() < 0.5) {
+            if(Math.floor(Math.random() * 100) > (playerPossession.stats["Shooting"] - matchup.stats["Blocks"] + 25) && Math.random() < 0.2) {
                 matchup.gameStats["BLK"]++;
+                
+                possessionSummary += "<p>"+ matchup.name +" blocks the shot! ("+ matchup.gameStats["BLK"] +" BLKS)</p>";
+                
                 getRebound = true;
             } else {          
                 if(Math.floor(Math.random()*101) <= makeChance) {
